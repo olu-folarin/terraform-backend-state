@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 // create an s3 bucket where the states of different projecta can be stored with different ids
-provider "aws_s3_bucket" "backend_bucket" {
+resource "aws_s3_bucket" "backend_bucket" {
     bucket = "dev-applications-backend-state-olufolarin"
 
     // add lifecycle to prevent the deletion of the bucket
@@ -36,3 +36,6 @@ provider "aws_s3_bucket" "backend_bucket" {
 }
 
 // lock the state with Dynamo DB to prevent any team member from tampering from it
+resource "aws_dynamodb_table" "backend_state_lock" {
+    
+}
