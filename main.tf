@@ -37,5 +37,14 @@ resource "aws_s3_bucket" "backend_bucket" {
 
 // lock the state with Dynamo DB to prevent any team member from tampering from it
 resource "aws_dynamodb_table" "backend_state_lock" {
-    
+    // name of the table
+    name = "dev_application_locks"
+    // how you want to be billed
+    billing_mode = "PAY_PER_REQUEST"
+
+    // column names in the db
+    attribute {
+        name = "LockID"
+        type = "S"
+    }
 }
