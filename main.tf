@@ -13,7 +13,7 @@ provider "aws" {
 
 // create an s3 bucket where the states of different projecta can be stored with different ids
 provider "aws_s3_bucket" "backend_bucket" {
-    bucket = ""
+    bucket = "dev-applications-backend-state"
 }
 
 // lock the state with Dynamo DB to prevent any team member from tampering from it
