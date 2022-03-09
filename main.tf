@@ -41,8 +41,10 @@ resource "aws_dynamodb_table" "backend_state_lock" {
   name = "dev_application_locks"
   // how you want to be billed
   billing_mode = "PAY_PER_REQUEST"
-  // column names in the db
+
   hash_key = "LockID"
+  
+  // column names in the db
   attribute {
     name = "LockID"
     type = "S"
