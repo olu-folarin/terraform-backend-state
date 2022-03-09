@@ -17,7 +17,8 @@ resource "aws_s3_bucket" "backend_state" {
 
   // add lifecycle to prevent the deletion of the bucket
   lifecycle {
-    prevent_destroy = true
+    create_before_destroy = true
+    // prevent_destroy = true
   }
 
   // enable versioning in order to store multiple versions of the state
@@ -43,7 +44,7 @@ resource "aws_dynamodb_table" "backend_state_lock" {
   billing_mode = "PAY_PER_REQUEST"
 
   hash_key = "LockID"
-  
+
   // column names in the db
   attribute {
     name = "LockID"
